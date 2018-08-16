@@ -12,4 +12,6 @@
     <dimen name="margin_large">32dp</dimen>
     <dimen name="card_elevation">100dp</dimen>
     <dimen name="card_radius">8dp</dimen>
+
+    <dimen name="mainTextSize">16sp</dimen>
 </resources>

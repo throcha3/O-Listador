@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.DatePicker
+import android.widget.SeekBar
 import android.widget.Toast
 import br.com.thiagopgr.olistador.R
 import br.com.thiagopgr.olistador.business.ClassificationBusiness
@@ -21,7 +22,20 @@ import kotlinx.android.synthetic.main.activity_thing_form.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ThingFormActivity : AppCompatActivity(), View.OnClickListener {
+class ThingFormActivity : AppCompatActivity(), View.OnClickListener, SeekBar.OnSeekBarChangeListener {
+    override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+        if (seekBar.id == R.id.seekRate) {
+            txtRateValue.text = progress.toString()
+        }
+    }
+
+    override fun onStartTrackingTouch(seekBar: SeekBar?) {
+
+    }
+
+    override fun onStopTrackingTouch(seekBar: SeekBar?) {
+
+    }
 
     private var SIMPLE_DATE_FORMAT = SimpleDateFormat("dd/MM/yyyy")
     private var mThingId: Int = 0
@@ -87,9 +101,17 @@ class ThingFormActivity : AppCompatActivity(), View.OnClickListener {
         btnCompleted.setOnClickListener(this)
         btnStarted.setOnClickListener(this)
         btnRelease.setOnClickListener(this)
+        seekRate.setOnSeekBarChangeListener(this)
     }
 
     private fun handleSave() {
+
+        if (edtCurrEpisode.text == null) edtCurrEpisode.setText(0)
+        if (edtCurrSeason.text == null)  edtCurrSeason.setText(0)
+        if (edtEpisodes.text == null)    edtEpisodes.setText(0)
+        if (edtSeasons.text == null)     edtSeasons.setText(0)
+
+
 
         try {
             val name = edtName.text.toString()
@@ -102,7 +124,7 @@ class ThingFormActivity : AppCompatActivity(), View.OnClickListener {
             val release = btnRelease.text.toString()
             val started = btnStarted.text.toString()
             val completed = btnCompleted.text.toString()
-            val rate = 5
+            val rate = seekRate.progress
             val imageUrl = ""
             val currEp = edtCurrEpisode.text.toString().toInt()
             val currSe = edtCurrSeason.text.toString().toInt()
@@ -157,7 +179,7 @@ class ThingFormActivity : AppCompatActivity(), View.OnClickListener {
             // Carrega tarefa
             if (mThingId != 0) {
                 //textToolbar.setText(R.string.atualizar_tarefa)
-                btnSave.setText(getString(R.string.edit))
+                btnSave.text = getString(R.string.edit)
 
                 // Carrega tarefa
                 val thing = mThingBusiness.get(mThingId)
@@ -169,6 +191,9 @@ class ThingFormActivity : AppCompatActivity(), View.OnClickListener {
                     edtCurrSeason.setText(thing.curr_se.toString())
                     edtSeasons.setText(thing.seasons.toString())
                     edtEpisodes.setText(thing.episodes.toString())
+
+                    txtRateValue.text = thing.rate.toString()
+                    seekRate.progress = thing.rate
 
                     btnRelease.text = thing.release
                     btnCompleted.text = thing.completed

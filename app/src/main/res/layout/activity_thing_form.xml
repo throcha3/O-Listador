@@ -24,6 +24,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:text="Inserir Coisa"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -46,8 +47,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="0dp"
                 android:layout_marginStart="0dp"
-                android:lines="4"
                 android:hint="@string/description"
+                android:lines="4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edtName" />
@@ -59,6 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:text="Tipo:"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@id/guideline2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/edtDesc" />
@@ -77,6 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:text="Classificação:"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/guideline2"
                 app:layout_constraintTop_toBottomOf="@id/edtDesc" />
@@ -105,28 +108,38 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Temporadas:"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/viewLine2" />
 
             <EditText
                 android:id="@+id/edtSeasons"
+                style="@style/mGrayTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="100dp"
-                android:hint="Total Temps"
                 android:inputType="number"
-                android:text="10"
                 app:layout_constraintEnd_toStartOf="@id/guideline2"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imgLessSeasons"
                 app:layout_constraintTop_toBottomOf="@+id/textSeasons" />
+
             <ImageView
-                android:id="@+id/imageAddSeasons"
+                android:id="@+id/imgAddSeasons"
                 android:layout_width="30dp"
                 android:layout_height="40dp"
+                android:src="@drawable/ic_add"
                 app:layout_constraintStart_toEndOf="@id/edtSeasons"
-                app:layout_constraintTop_toBottomOf="@id/textSeasons"
-                android:src="@drawable/ic_add"/>
+                app:layout_constraintTop_toBottomOf="@id/textSeasons" />
+
+            <ImageView
+                android:id="@+id/imgLessSeasons"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_less"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textSeasons" />
 
             <TextView
                 android:id="@+id/textEps"
@@ -136,6 +149,7 @@
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="8dp"
                 android:text="Episódios:"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/guideline2"
                 app:layout_constraintTop_toBottomOf="@id/viewLine2" />
@@ -145,12 +159,27 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="100dp"
-                android:hint="Total Eps"
                 android:inputType="number"
-                android:text="800"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/guideline2"
+                app:layout_constraintStart_toEndOf="@id/imgLessEpisodes"
                 app:layout_constraintTop_toBottomOf="@id/textEps" />
+
+            <ImageView
+                android:id="@+id/imgAddEpisodes"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_add"
+                app:layout_constraintStart_toEndOf="@id/edtEpisodes"
+                app:layout_constraintTop_toBottomOf="@id/textEps" />
+
+            <ImageView
+                android:id="@+id/imgLessEpisodes"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_less"
+
+                app:layout_constraintStart_toStartOf="@id/guideline2"
+                app:layout_constraintTop_toBottomOf="@id/textSeasons" />
 
             <TextView
                 android:id="@+id/textCurrSeason"
@@ -158,6 +187,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Atual Temporada:"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edtSeasons" />
@@ -167,12 +197,27 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="100dp"
-                android:hint="Total Temps"
                 android:inputType="number"
-                android:text="10"
                 app:layout_constraintEnd_toStartOf="@id/guideline2"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imgLessCurrSe"
                 app:layout_constraintTop_toBottomOf="@+id/textCurrSeason" />
+
+            <ImageView
+                android:id="@+id/imgAddCurrSe"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_add"
+                app:layout_constraintStart_toEndOf="@id/edtCurrSeason"
+                app:layout_constraintTop_toBottomOf="@id/textCurrSeason" />
+
+            <ImageView
+                android:id="@+id/imgLessCurrSe"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_less"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textCurrSeason" />
 
             <TextView
                 android:id="@+id/textCurrentEpisode"
@@ -182,6 +227,7 @@
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="8dp"
                 android:text="Atual Episódio:"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/guideline2"
                 app:layout_constraintTop_toBottomOf="@id/edtEpisodes" />
@@ -191,11 +237,26 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="100dp"
-                android:hint="Total Eps"
                 android:inputType="number"
-                android:text="800"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/guideline2"
+                app:layout_constraintStart_toEndOf="@id/imgLessCurrEp"
+                app:layout_constraintTop_toBottomOf="@id/textCurrentEpisode" />
+
+            <ImageView
+                android:id="@+id/imgAddCurrEp"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_add"
+                app:layout_constraintStart_toEndOf="@id/edtCurrEpisode"
+                app:layout_constraintTop_toBottomOf="@id/textCurrentEpisode" />
+
+            <ImageView
+                android:id="@+id/imgLessCurrEp"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_less"
+
+                app:layout_constraintStart_toStartOf="@id/guideline2"
                 app:layout_constraintTop_toBottomOf="@id/textCurrentEpisode" />
 
 
@@ -214,6 +275,7 @@
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="8dp"
                 android:text="Data Lançamento:"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@id/guideline2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/edtCurrSeason" />
@@ -235,6 +297,7 @@
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="8dp"
                 android:text="Comecei Assistir:"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/guideline2"
                 app:layout_constraintTop_toBottomOf="@id/edtCurrEpisode" />
@@ -256,6 +319,7 @@
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="8dp"
                 android:text="Terminei Em:"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@id/guideline2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/btnRelease" />
@@ -282,22 +346,34 @@
                 app:layout_constraintTop_toBottomOf="@id/btnStarted" />
 
             <SeekBar
+                android:id="@+id/seekRate"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:max="10"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/guideline2"
                 app:layout_constraintTop_toBottomOf="@id/textRate" />
+
+            <TextView
+                android:id="@+id/txtRateValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/seekRate" />
         </android.support.constraint.ConstraintLayout>
 
         <Button
             android:id="@+id/btnSave"
             android:layout_width="match_parent"
-            android:layout_margin="20dp"
-            android:textColor="#c9c8c8"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:background="@drawable/round_btn"
-            android:text="Salvar" />
+            android:text="Salvar"
+            android:textColor="#c9c8c8" />
 
     </LinearLayout>
 </ScrollView>
