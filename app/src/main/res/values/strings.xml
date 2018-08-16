@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">O Listador</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="fill_all_fields">Os campos obrigatórios não foram preenchidos!</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sim">Sim</string>
+    <string name="cancel">Cancelar</string>
+    <string name="click_date">Clique para data</string>
+    <string name="name">Nome</string>
+    <string name="description">Descrição</string>
+    <string name="edit">Editar</string>
+</resources>

@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".views.ThingFormActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Inserir Coisa"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/edtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="0dp"
+                android:layout_marginStart="0dp"
+                android:hint="@string/name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+
+            <EditText
+                android:id="@+id/edtDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="0dp"
+                android:layout_marginStart="0dp"
+                android:lines="4"
+                android:hint="@string/description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edtName" />
+
+
+            <TextView
+                android:id="@+id/textType"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="Tipo:"
+                app:layout_constraintEnd_toStartOf="@id/guideline2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/edtDesc" />
+
+            <Spinner
+                android:id="@+id/spinnerType"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@id/guideline2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textType" />
+
+            <TextView
+                android:id="@+id/textClassification"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="Classificação:"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/guideline2"
+                app:layout_constraintTop_toBottomOf="@id/edtDesc" />
+
+            <Spinner
+                android:id="@+id/spinnerClassification"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/guideline2"
+                app:layout_constraintTop_toBottomOf="@id/textClassification" />
+
+            <View
+                android:id="@+id/viewLine2"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="2dp"
+                android:background="#7b7b7b"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/spinnerType" />
+
+            <TextView
+                android:id="@+id/textSeasons"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Temporadas:"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewLine2" />
+
+            <EditText
+                android:id="@+id/edtSeasons"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="100dp"
+                android:hint="Total Temps"
+                android:inputType="number"
+                android:text="10"
+                app:layout_constraintEnd_toStartOf="@id/guideline2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textSeasons" />
+            <ImageView
+                android:id="@+id/imageAddSeasons"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                app:layout_constraintStart_toEndOf="@id/edtSeasons"
+                app:layout_constraintTop_toBottomOf="@id/textSeasons"
+                android:src="@drawable/ic_add"/>
+
+            <TextView
+                android:id="@+id/textEps"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="0dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="8dp"
+                android:text="Episódios:"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/guideline2"
+                app:layout_constraintTop_toBottomOf="@id/viewLine2" />
+
+            <EditText
+                android:id="@+id/edtEpisodes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="100dp"
+                android:hint="Total Eps"
+                android:inputType="number"
+                android:text="800"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/guideline2"
+                app:layout_constraintTop_toBottomOf="@id/textEps" />
+
+            <TextView
+                android:id="@+id/textCurrSeason"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Atual Temporada:"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edtSeasons" />
+
+            <EditText
+                android:id="@+id/edtCurrSeason"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="100dp"
+                android:hint="Total Temps"
+                android:inputType="number"
+                android:text="10"
+                app:layout_constraintEnd_toStartOf="@id/guideline2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textCurrSeason" />
+
+            <TextView
+                android:id="@+id/textCurrentEpisode"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="0dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="8dp"
+                android:text="Atual Episódio:"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/guideline2"
+                app:layout_constraintTop_toBottomOf="@id/edtEpisodes" />
+
+            <EditText
+                android:id="@+id/edtCurrEpisode"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="100dp"
+                android:hint="Total Eps"
+                android:inputType="number"
+                android:text="800"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/guideline2"
+                app:layout_constraintTop_toBottomOf="@id/textCurrentEpisode" />
+
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <TextView
+                android:id="@+id/textRelease"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="0dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="8dp"
+                android:text="Data Lançamento:"
+                app:layout_constraintEnd_toEndOf="@id/guideline2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/edtCurrSeason" />
+
+            <Button
+                android:id="@+id/btnRelease"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/click_date"
+                app:layout_constraintEnd_toStartOf="@id/guideline2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textRelease" />
+
+            <TextView
+                android:id="@+id/textStarted"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="0dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="8dp"
+                android:text="Comecei Assistir:"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/guideline2"
+                app:layout_constraintTop_toBottomOf="@id/edtCurrEpisode" />
+
+            <Button
+                android:id="@+id/btnStarted"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/click_date"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/guideline2"
+                app:layout_constraintTop_toBottomOf="@id/textStarted" />
+
+            <TextView
+                android:id="@+id/textCompleted"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="0dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="8dp"
+                android:text="Terminei Em:"
+                app:layout_constraintEnd_toEndOf="@id/guideline2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnRelease" />
+
+            <Button
+                android:id="@+id/btnCompleted"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/click_date"
+                app:layout_constraintEnd_toEndOf="@id/guideline2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textCompleted" />
+
+            <TextView
+                android:id="@+id/textRate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="0dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="8dp"
+                android:text="Nota:"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/guideline2"
+                app:layout_constraintTop_toBottomOf="@id/btnStarted" />
+
+            <SeekBar
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:max="10"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/guideline2"
+                app:layout_constraintTop_toBottomOf="@id/textRate" />
+        </android.support.constraint.ConstraintLayout>
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_margin="20dp"
+            android:textColor="#c9c8c8"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_btn"
+            android:text="Salvar" />
+
+    </LinearLayout>
+</ScrollView>
+
+
