@@ -13,7 +13,7 @@ class ThingBusiness(val context: Context) {
     fun get(id: Int): ThingEntity? = mThingRepository.get(id)
 
 
-    fun getList(typeFilter: Int): MutableList<ThingEntity> = mThingRepository.getList(typeFilter)
+    fun getList(typeFilter: Int, typeClassi: Int): MutableList<ThingEntity> = mThingRepository.getList(typeFilter, typeClassi)
 
     fun insert(thing: ThingEntity) {
 

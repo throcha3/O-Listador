@@ -13,5 +13,9 @@
     <dimen name="card_elevation">100dp</dimen>
     <dimen name="card_radius">8dp</dimen>
 
-    <dimen name="mainTextSize">16sp</dimen>
+    <dimen name="mainTextSize">14sp</dimen>
+    <dimen name="body_bigger">15sp</dimen>
+
+    <dimen name="btn_default">14sp</dimen>
+    <dimen name="sub_heading">16sp</dimen>
 </resources>

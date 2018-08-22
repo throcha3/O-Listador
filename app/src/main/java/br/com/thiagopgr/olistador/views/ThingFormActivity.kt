@@ -174,7 +174,7 @@ class ThingFormActivity : AppCompatActivity(), View.OnClickListener, SeekBar.OnS
     private fun loadDataFromActivity() {
         val bundle = intent.extras
         if (bundle != null) {
-            mThingId = bundle.getInt(OListadorConstants.BUNDLE.THINGID, 0)
+            mThingId = bundle.getInt(OListadorConstants.BUNDLE.THING_ID, 0)
 
             // Carrega tarefa
             if (mThingId != 0) {

@@ -27,7 +27,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.MainActivity" />
         </activity>
-        <activity android:name=".views.ThingDetailActivity"></activity>
+        <activity android:name=".views.ThingDetailActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.MainActivity" />
+        </activity>
+        <activity android:name=".views.NoteFormActivity" />
+        <activity android:name=".views.NameFormActivity"></activity>
     </application>
 
 </manifest>

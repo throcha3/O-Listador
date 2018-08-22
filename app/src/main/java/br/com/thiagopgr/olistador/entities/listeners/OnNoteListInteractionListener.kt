@@ -1,6 +1,6 @@
 package br.com.thiagopgr.olistador.entities.listeners
 
-interface OnThingListFragmentInteractionListener {
+interface OnNoteListInteractionListener {
     /**
      * Click para edição
      */

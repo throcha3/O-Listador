@@ -10,7 +10,7 @@ import br.com.thiagopgr.olistador.viewholders.ThingViewHolder
 
 class ThingListAdapter (taskList: List<ThingEntity>, listener: OnThingListFragmentInteractionListener): RecyclerView.Adapter<ThingViewHolder>() {
     private val mListTaskEntities: List<ThingEntity> = taskList
-    private val listener: OnThingListFragmentInteractionListener = listener
+    private val mListener: OnThingListFragmentInteractionListener = listener
 
     override fun getItemCount(): Int {
         if (mListTaskEntities != null) {
@@ -22,7 +22,7 @@ class ThingListAdapter (taskList: List<ThingEntity>, listener: OnThingListFragme
     override fun onBindViewHolder(holder: ThingViewHolder, position: Int) {
         // Obtém item da lista
         val task: ThingEntity = mListTaskEntities[position]
-        holder.bindData(task, listener)
+        holder.bindData(task, mListener)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ThingViewHolder {

@@ -11,35 +11,43 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.SearchView
+import android.widget.TextView
 import android.widget.Toast
 import br.com.thiagopgr.olistador.R
 import br.com.thiagopgr.olistador.business.ClassificationBusiness
 import br.com.thiagopgr.olistador.business.ThingBusiness
 import br.com.thiagopgr.olistador.business.TypeBusiness
+import br.com.thiagopgr.olistador.constants.OListadorConstants
 import br.com.thiagopgr.olistador.entities.ThingEntity
 import br.com.thiagopgr.olistador.repositories.caches.ClassificationCacheConstants
 import br.com.thiagopgr.olistador.repositories.caches.TypeCacheConstants
 import br.com.thiagopgr.olistador.repositories.helpers.OListadorDatabaseHelper
+import br.com.thiagopgr.olistador.util.SecPrefs
 import br.com.thiagopgr.olistador.util.exception.ValidationException
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    private lateinit var mOListadorDatabaseHelper : OListadorDatabaseHelper
+    private lateinit var mSecPrefs : SecPrefs
+
     private val mClassificationBusiness: ClassificationBusiness = ClassificationBusiness()
     private val mTypeBusiness: TypeBusiness = TypeBusiness()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
+        mSecPrefs = SecPrefs(this)
+
         /*fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }
 */
+
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
@@ -47,17 +55,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         nav_view.setNavigationItemSelectedListener(this)
 
-        /*for (i in 1..50){
-            executa()
-        }*/
-        //Toast.makeText(this, "cabou", Toast.LENGTH_LONG).show()
         loadCaches()
-        startDefaultFragment()
+        formatUserName()
+        //executa()
+        startDefaultFragment(0,0)
     }
 
-    private fun startDefaultFragment() {
+    private fun startDefaultFragment(filterT: Int, filterC: Int) {
         // Inicializa fragment
-        val fragment: Fragment = ThingsListFragment.newInstance("","")
+        val fragment: Fragment = ThingsListFragment.newInstance(filterT, filterC)
 
         // Insere fragment substituindo qualquer existente
         val fragmentManager = supportFragmentManager
@@ -67,18 +73,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun executa(){
         val thing = ThingEntity(0,
                 "One Piece",
-                "Anime Massa novo que to assistindo aqui",
+                "Luffy forma uma tripulação para que ele possa se tornar o rei dos piratas!!",
                 1,
                 2,
-                1,
+                12,
                 830,
-                "data",
-                "01/08/2018",
-                "data",
-                10,
-                "data",
-                43,
-                2
+                "20/08/1999",
+                "01/03/2018",
+                "",
+                8,
+                "",
+                91,
+                3
                 )
         try {
             val mB: ThingBusiness = ThingBusiness(this)
@@ -121,25 +127,23 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.nav_camera -> {
-                startActivity(Intent(this, ThingFormActivity::class.java))
+            R.id.nav_classi_all -> {
+                //startActivity(Intent(this, ThingFormActivity::class.java))
+                startDefaultFragment(0,0)
             }
-            R.id.nav_gallery -> {
+            R.id.nav_classi_animes -> {
+                val fragment: Fragment = ThingNotesFragment.newInstance(0)
 
+                // Insere fragment substituindo qualquer existente
+                val fragmentManager = supportFragmentManager
+                fragmentManager.beginTransaction().replace(R.id.frameContent, fragment).commit()
             }
-            R.id.nav_slideshow -> {
+            R.id.nav_classi_book -> {
+                startActivity(Intent(this, NoteFormActivity::class.java))
+            }
 
-            }
-            R.id.nav_manage -> {
-
-            }
-            R.id.nav_share -> {
-
-            }
-            R.id.nav_send -> {
-
-            }
         }
+
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
@@ -148,5 +152,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun loadCaches(){
         TypeCacheConstants.setCache(mTypeBusiness.getList())
         ClassificationCacheConstants.setCache(mClassificationBusiness.getList())
+    }
+
+    private fun formatUserName() {
+        val str = "Olá, ${mSecPrefs.getStoredString(OListadorConstants.KEY.USER_NAME)}!"
+
+        val navigationView = findViewById<NavigationView>(R.id.nav_view)
+        navigationView.setNavigationItemSelectedListener(this)
+        val header = navigationView.getHeaderView(0)
+
+        val name = header.findViewById<TextView>(R.id.txtNavUserName)
+
+        name.text = str
     }
 }

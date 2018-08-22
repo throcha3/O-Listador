@@ -3,20 +3,21 @@ package br.com.thiagopgr.olistador.constants
 class OListadorConstants {
 
     object KEY {
-        val USER_NAME = "username_listador"
+        val USER_NAME = "username"
+        val USER_GENDER = "usergender"
     }
 
-    object THINGFILTERTYPE {
-        val FILTERKEY = "filterKey_listador"
+    object THING_FILTER_TYPE {
+        val FILTER_KEY = "filterKey_listador"
         val ALL = 0
-        val ONTHEMOVE = 1
+        val ON_THE_MOVE = 1
         val FINISHED = 2
         val WISHLIST = 3
 
     }
 
     object BUNDLE {
-        val THINGID = "thingId_listador"
+        val THING_ID = "thingId_listador"
         val NOTEID = "noteId_listador"
     }
 

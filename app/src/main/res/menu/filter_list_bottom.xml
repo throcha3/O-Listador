@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <item
+        android:id="@+id/filter_all"
+        android:icon="@drawable/ic_all"
+        android:title="@string/all" />
+    <item
+        android:id="@+id/filter_on_the_move"
+        android:icon="@drawable/ic_on_the_move"
+        android:title="@string/type_on_the_move" />
+    <item
+        android:id="@+id/filter_finished"
+        android:icon="@drawable/ic_completed"
+        android:title="@string/type_finished"
+        />
+    <item
+        android:id="@+id/filter_wishlist"
+        android:icon="@drawable/ic_wishlist"
+        android:title="@string/type_wishlist" />
+
+</menu>

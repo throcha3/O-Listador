@@ -95,7 +95,7 @@ class ThingRepository private constructor(context: Context) {
         }
     }
 
-    fun getList(typeFilter: Int): MutableList<ThingEntity> {
+    fun getList(typeFilter: Int, classiFilter: Int): MutableList<ThingEntity> {
         val list = mutableListOf<ThingEntity>()
 
         try {
@@ -103,10 +103,22 @@ class ThingRepository private constructor(context: Context) {
             val db = this.mOListadorDatabaseHelper.readableDatabase
 
             // Lista de taerfas filtradas de acordo com parâmetro
-            if (typeFilter != 0) {
+
+            //Tem tipo mas não tem classificação
+            if (typeFilter != 0 && classiFilter == 0) {
                 cursor = db.rawQuery("SELECT * FROM ${DatabaseConstants.THINGS.TABLE_NAME} WHERE " +
                         "${DatabaseConstants.THINGS.COLUMNS.TYPE} = $typeFilter",  null)
-            } else {
+            }
+            else if(classiFilter != 0 && typeFilter == 0) { //Tem classificação mas não tem tipo
+                cursor = db.rawQuery("SELECT * FROM ${DatabaseConstants.THINGS.TABLE_NAME} WHERE " +
+                        "${DatabaseConstants.THINGS.COLUMNS.CLASSIFICATION} = $classiFilter",  null)
+            }
+            else if(classiFilter != 0 && typeFilter != 0) { //Tem ambos
+                cursor = db.rawQuery("SELECT * FROM ${DatabaseConstants.THINGS.TABLE_NAME} WHERE " +
+                        " ${DatabaseConstants.THINGS.COLUMNS.CLASSIFICATION} = $classiFilter AND " +
+                        " ${DatabaseConstants.THINGS.COLUMNS.TYPE} = $typeFilter",  null)
+            }
+            else {
                 cursor = db.rawQuery("SELECT * FROM ${DatabaseConstants.THINGS.TABLE_NAME}", null)
             }
 

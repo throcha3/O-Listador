@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -16,10 +17,34 @@ import br.com.thiagopgr.olistador.business.ThingBusiness
 import br.com.thiagopgr.olistador.entities.ThingEntity
 import br.com.thiagopgr.olistador.entities.listeners.OnThingListFragmentInteractionListener
 import android.view.*
+import android.widget.Toast
 import br.com.thiagopgr.olistador.constants.OListadorConstants
+import kotlinx.android.synthetic.main.fragment_things_list.*
 
 
-class ThingsListFragment : Fragment(), View.OnClickListener,SearchView.OnQueryTextListener {
+class ThingsListFragment : Fragment(), View.OnClickListener,SearchView.OnQueryTextListener, BottomNavigationView.OnNavigationItemSelectedListener {
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
+            R.id.filter_all ->{
+                mFilterType = 0
+                loadThings()
+            }
+            R.id.filter_on_the_move ->{
+                mFilterType = 1
+                loadThings()
+            }
+            R.id.filter_finished ->{
+                mFilterType = 2
+                loadThings()
+            }
+            R.id.filter_wishlist ->{
+                mFilterType = 3
+                loadThings()
+            }
+        }
+
+        return true
+    }
 
     private var mUserSearch: String = ""
 
@@ -34,6 +59,7 @@ class ThingsListFragment : Fragment(), View.OnClickListener,SearchView.OnQueryTe
     }
 
     private var mFilterType: Int = 0
+    private var mFilterClassi: Int = 0
     private lateinit var mContext: Context
     private lateinit var mThingBusiness: ThingBusiness
     private lateinit var mOnThingListFragmentInteractionListener: OnThingListFragmentInteractionListener
@@ -56,6 +82,9 @@ class ThingsListFragment : Fragment(), View.OnClickListener,SearchView.OnQueryTe
             param2 = it.getString(ARG_PARAM2)
             aqui o mFilterType vai receber o valor passado pelo bundle!
         }*/
+
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -64,7 +93,7 @@ class ThingsListFragment : Fragment(), View.OnClickListener,SearchView.OnQueryTe
         val searchItem: MenuItem = menu.findItem(R.id.action_search)
         val searchView = searchItem.actionView as SearchView
         searchView.setOnQueryTextListener(this)
-        searchView.queryHint = "Procuree!!!"
+        searchView.queryHint = "Digite um nome.."
 
     }
 
@@ -82,12 +111,11 @@ class ThingsListFragment : Fragment(), View.OnClickListener,SearchView.OnQueryTe
         // Necessário buscar os elementos de interface através do findViewById. Não funciona Kotlin-Extensions
         rootView.findViewById<FloatingActionButton>(R.id.floatAddThing).setOnClickListener(this)
 
-        //rootView.findViewById<SearchView>(R.id.action_search).setOnQueryTextListener(this)
+        rootView.findViewById<BottomNavigationView>(R.id.bottomNav).setOnNavigationItemSelectedListener(this)
 
         // Inicializa listener
         //txtView.text = "OI jovem"
         createInteractionListener()
-
         // 1 - Obter a recyclerView
         mRecyclerThingList = rootView.findViewById(R.id.recViewThings)
 
@@ -109,7 +137,7 @@ class ThingsListFragment : Fragment(), View.OnClickListener,SearchView.OnQueryTe
 
     companion object {
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(param1: Int, param2: Int) =
                 ThingsListFragment().apply {
                     arguments = Bundle().apply {
                         /*putString(ARG_PARAM1, param1)
@@ -124,7 +152,7 @@ class ThingsListFragment : Fragment(), View.OnClickListener,SearchView.OnQueryTe
         mOnThingListFragmentInteractionListener = object : OnThingListFragmentInteractionListener {
             override fun onListClick(taskId: Int) {
                 val bundle = Bundle()
-                bundle.putInt(OListadorConstants.BUNDLE.THINGID, taskId)
+                bundle.putInt(OListadorConstants.BUNDLE.THING_ID, taskId)
 
                 val intent = Intent(mContext, ThingFormActivity::class.java)
                 intent.putExtras(bundle)
@@ -137,22 +165,14 @@ class ThingsListFragment : Fragment(), View.OnClickListener,SearchView.OnQueryTe
                 loadTasks()*/
             }
 
-            override fun onCompleteClick(taskId: Int) {
-                /*mTaskBusiness.complete(taskId, true)
-                loadTasks()*/
-            }
 
-            override fun onUncompleteClick(taskId: Int) {
-                /* mTaskBusiness.complete(taskId, false)
-                loadTasks()*/
-            }
         }
     }
 
     private fun loadThings() {
 
         // Carrega lista de tarefas
-        val listThingEntity: MutableList<ThingEntity> = mThingBusiness.getList(mFilterType)
+        val listThingEntity: MutableList<ThingEntity> = mThingBusiness.getList(mFilterType, mFilterClassi)
 
         if (mUserSearch != ""){
             var listFiltered: MutableList<ThingEntity> = mutableListOf()

@@ -48,6 +48,7 @@ class OListadorDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATA
     private val createTableNotes = ( "CREATE TABLE ${DatabaseConstants.NOTES.TABLE_NAME} (" +
             " ${DatabaseConstants.NOTES.COLUMNS.ID} INTEGER PRIMARY KEY AUTOINCREMENT, " +
             " ${DatabaseConstants.NOTES.COLUMNS.THINGID} INTEGER, " +
+            " ${DatabaseConstants.NOTES.COLUMNS.DATE} TEXT, " +
             " ${DatabaseConstants.NOTES.COLUMNS.DESCRIPTION} TEXT " +
             ");" )
 

@@ -36,9 +36,9 @@ class ThingViewHolder(itemView: View, val context: Context) : RecyclerView.ViewH
         var img = context.resources.getDrawable(R.drawable.ic_completed, null)
 
         when(thingEntity.type){
-            1 -> img = context.resources.getDrawable(R.drawable.ic_on_the_move,null)
-            2 -> img = context.resources.getDrawable(R.drawable.ic_completed,null)
-            3 -> img = context.resources.getDrawable(R.drawable.ic_wishlist,null)
+            1 -> img = context.resources.getDrawable(R.drawable.ic_on_the_move_blue,null)
+            2 -> img = context.resources.getDrawable(R.drawable.ic_completed_green,null)
+            3 -> img = context.resources.getDrawable(R.drawable.ic_wishlist_red,null)
         }
 
         mName.setCompoundDrawablesWithIntrinsicBounds(img, null,null,null)
@@ -47,7 +47,7 @@ class ThingViewHolder(itemView: View, val context: Context) : RecyclerView.ViewH
 
 
         // Atribui evento de click de detalhes
-        mDescription.setOnClickListener {
+        itemView.setOnClickListener {
             listener.onListClick(thingEntity.id)
         }
 
@@ -57,19 +57,6 @@ class ThingViewHolder(itemView: View, val context: Context) : RecyclerView.ViewH
             true
         }
 
-        /*mImageTask.setOnClickListener({
-            if (taskEntity.complete) {
-                listener.onUncompleteClick(taskEntity.id)
-            } else {
-                listener.onCompleteClick(taskEntity.id)
-            }
-        })*/
-
-        // Faz o tratamento para tarefas já completas
-        /*if (taskEntity.complete) {
-            this.mTextDescription.setTextColor(Color.GRAY)
-            this.mImageTask.setImageResource(R.drawable.ic_done)
-        }*/
 
     }
 

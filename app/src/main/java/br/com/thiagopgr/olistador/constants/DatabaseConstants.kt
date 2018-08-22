@@ -29,6 +29,7 @@ class DatabaseConstants {
             val ID = "_id"
             val THINGID = "thing_id"
             val DESCRIPTION = "description"
+            val DATE = "date"
         }
     }
 }

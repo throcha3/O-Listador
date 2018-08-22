@@ -12,12 +12,19 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="fill_all_fields">Os campos obrigatórios não foram preenchidos!</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sim">Sim</string>
     <string name="cancel">Cancelar</string>
     <string name="click_date">Clique para data</string>
     <string name="name">Nome</string>
     <string name="description">Descrição</string>
     <string name="edit">Editar</string>
+    <string name="types">Tipos</string>
+    <string name="type_wishlist">Lista de Desejos</string>
+    <string name="type_finished">Finalizado</string>
+    <string name="type_on_the_move">Em andamento</string>
+    <string name="all">Todos</string>
+    <string name="invalid_parameter_insert">Parâmetro incorreto. Não foi possível gravar.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
